@@ -38,9 +38,8 @@ public class animalDetails extends AppCompatActivity {
         if (extras != null){
             animal = extras.getString("Animal");
             image = extras.getInt("Image");
-            position = extras.getInt("position");
+            position = extras.getInt("Position");
         }
-
         nameText.setText(animal);
         description.setText(animalDescriptions[position]);
         animalImage.setImageResource(image);

@@ -4,18 +4,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-public class listAdapter extends android.widget.BaseAdapter implements View.OnClickListener {
+public class listAdapter extends android.widget.BaseAdapter {
 
+    private final ListViewClickListener listener;
     Context context;
     String[] animalList;
     int[] imagesList;
     LayoutInflater inflater;
-    private ListViewClickListener listener;
     int position;
 
     public listAdapter(Context context, String[] animals, int[] images, ListViewClickListener listener) {
@@ -41,8 +39,6 @@ public class listAdapter extends android.widget.BaseAdapter implements View.OnCl
         return i;
     }
 
-
-
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
         view = inflater.inflate(R.layout.item_list, null);
@@ -50,15 +46,15 @@ public class listAdapter extends android.widget.BaseAdapter implements View.OnCl
         ImageView animalImage = view.findViewById(R.id.imageIcon);
         textView.setText(animalList[position]);
         animalImage.setImageResource(imagesList[position]);
-        view.setOnClickListener(this);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onClick(view, position);
+            }
+        });
+        this.position = position;
 
         return view;
-    }
-
-    @Override
-    public void onClick(View view) {
-
-        listener.onClick(view, position);
     }
 
     public interface ListViewClickListener{

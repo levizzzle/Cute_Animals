@@ -5,40 +5,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.ViewHolder> {
 
+    private final RecyclerViewClickListener listener;
     String[] animalList;
     int[] imagesList;
-    private RecyclerViewClickListener listener;
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private final TextView textView;
-        private final ImageView imageView;
-
-        public ViewHolder(View view) {
-            super(view);
-            textView = view.findViewById(R.id.textView);
-            imageView = view.findViewById(R.id.imageIcon);
-            view.setOnClickListener(this);
-        }
-
-        public TextView getTextView() {
-            return textView;
-        }
-
-        public ImageView getImageView() {
-            return imageView;
-        }
-
-        @Override
-        public void onClick(View view) {
-            listener.onClick(view, this.getAdapterPosition());
-        }
-    }
 
     public recyclerAdapter(String[] animals, int[] images, RecyclerViewClickListener listener) {
         this.animalList = animals;
@@ -65,7 +39,32 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.ViewHo
         return animalList.length;
     }
 
-    public interface RecyclerViewClickListener{
+    public interface RecyclerViewClickListener {
         void onClick(View view, int position);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private final TextView textView;
+        private final ImageView imageView;
+
+        public ViewHolder(View view) {
+            super(view);
+            textView = view.findViewById(R.id.textView);
+            imageView = view.findViewById(R.id.imageIcon);
+            view.setOnClickListener(this);
+        }
+
+        public TextView getTextView() {
+            return textView;
+        }
+
+        public ImageView getImageView() {
+            return imageView;
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onClick(view, this.getAdapterPosition());
+        }
     }
 }

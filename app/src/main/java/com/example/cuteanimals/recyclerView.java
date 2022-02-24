@@ -5,18 +5,16 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class recyclerView extends Fragment {
 
-    private RecyclerView recyclerView;
-    private recyclerAdapter.RecyclerViewClickListener listener;
-
+    private final recyclerAdapter.RecyclerViewClickListener listener;
     String[] animalList;
     int[] animalImages;
+    private RecyclerView recyclerView;
 
     public recyclerView(String[] animals, int[] images, recyclerAdapter.RecyclerViewClickListener listener) {
         this.animalList = animals;
@@ -30,7 +28,7 @@ public class recyclerView extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.recyclerView);
         recyclerAdapter recyclerAdapter = new recyclerAdapter(animalList, animalImages, listener);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));

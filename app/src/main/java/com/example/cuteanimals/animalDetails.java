@@ -12,6 +12,7 @@ public class animalDetails extends AppCompatActivity {
     int[] animalImages = {R.drawable.bearded_tamarin_monkey, R.drawable.black_footed_cat, R.drawable.fennec_foxes,
             R.drawable.hippopotamuses, R.drawable.hummingbirds, R.drawable.mandarin_duckling,
             R.drawable.quokka, R.drawable.sea_otters, R.drawable.sea_turtles, R.drawable.wombat};
+
     String[] animalDescriptions = {"Bearded tamarin monkeys are squirrel-sized animals that are very social, and live in large groups in Peru and the southern Amazon Basin.",
             "Black-footed cats are the smallest species of wild cat, weighing between 3 and 5 pounds. They live in southern Africa, and are both solitary and strictly nocturnal. The cats can kill as many as 14 small animals in a single night.",
             "Fennec foxes are playful and social creatures that live in the sandy Sahara and North Africa. They are the smallest of the world's foxes at 9-16 inches, and use their 6-inch-long ears to radiate body heat and keep cool.",
